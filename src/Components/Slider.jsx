@@ -15,22 +15,24 @@ const Slider = () => {
     return (
         <div className='h-screen w-full  flex justify-center items-center '>
             <div className='h-[90%] w-[80%] mx-auto sliderDiv flex items-center justify-between'>
-                <div className="quoteDiv w-[50%] py-12">
-                    <h1 className='text-[32px] font-light text-[#202046]'>
-                        {testimonials[0].testimonial}
-                    </h1>
+                <div className='flex items-center justify-between relative'>
+                    <div className="quoteDiv w-[61%] z-10 py-12">
+                        <h1 className='text-[32px] font-light text-[#202046]'>
+                            {testimonials[0].testimonial}
+                        </h1>
 
-                    <div className='mt-5 flex gap-4'>
-                        <p className='text-[#202046] text-[18px] font-bold'>
-                            {testimonials[0].name}
-                        </p>
-                        <p className='text-[#BABACF] text-[18px] font-semibold'>
-                            {testimonials[0].position}
-                        </p>
+                        <div className='mt-5 flex gap-4'>
+                            <p className='text-[#202046] text-[18px] font-bold'>
+                                {testimonials[0].name}
+                            </p>
+                            <p className='text-[#BABACF] text-[18px] font-semibold'>
+                                {testimonials[0].position}
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div className="imgDiv w-[50%] flex justify-center">
-                    <img className='w-[450px] shadow-2xl rounded-md' src={testimonials[0].image} alt="" />
+                    <div className="imgDiv w-[50%] flex justify-center absolute right-0 top-0">
+                        <img className='w-[450px] shadow-2xl rounded-md' src={testimonials[0].image} alt="" />
+                    </div>
                 </div>
             </div>
         </div>
