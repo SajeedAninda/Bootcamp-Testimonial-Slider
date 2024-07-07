@@ -15,7 +15,7 @@ const Slider = () => {
     return (
         <div className='h-screen w-full  flex justify-center items-center '>
             <div className='h-[90%] w-[80%] mx-auto sliderDiv flex items-center justify-between'>
-                <div className="quoteDiv w-[50%]">
+                <div className="quoteDiv w-[50%] py-12">
                     <h1 className='text-[32px] font-light text-[#202046]'>
                         {testimonials[0].testimonial}
                     </h1>
@@ -30,7 +30,7 @@ const Slider = () => {
                     </div>
                 </div>
                 <div className="imgDiv w-[50%] flex justify-center">
-                    <img className='w-[450px]' src={testimonials[0].image} alt="" />
+                    <img className='w-[450px] shadow-2xl rounded-md' src={testimonials[0].image} alt="" />
                 </div>
             </div>
         </div>
