@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import "./slider.css";
-import tanyaImg from "../assets/image-tanya.jpg";
-import johnImg from "../assets/image-john.jpg";
-import prevIcon from "../assets/icon-prev.svg";
-import nextIcon from "../assets/icon-next.svg";
-
+import './slider.css';
+import tanyaImg from '../assets/image-tanya.jpg';
+import johnImg from '../assets/image-john.jpg';
+import prevIcon from '../assets/icon-prev.svg';
+import nextIcon from '../assets/icon-next.svg';
 
 const Slider = () => {
     const testimonials = [
@@ -23,29 +22,38 @@ const Slider = () => {
     ];
 
     const [current, setCurrent] = useState(0);
+    const [slide, setSlide] = useState(true); 
     const length = testimonials.length;
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setCurrent(current => (current + 1) % length);
+            nextSlide();
         }, 3000);
 
         return () => clearInterval(interval);
-    }, [length]);
+    }, [current]);
 
     const nextSlide = () => {
-        setCurrent(current === length - 1 ? 0 : current + 1);
+        setSlide(false);
+        setTimeout(() => {
+            setCurrent(current === length - 1 ? 0 : current + 1);
+            setSlide(true); 
+        }, 500); 
     };
 
     const prevSlide = () => {
-        setCurrent(current === 0 ? length - 1 : current - 1);
+        setSlide(false);
+        setTimeout(() => {
+            setCurrent(current === 0 ? length - 1 : current - 1);
+            setSlide(true); 
+        }, 500); 
     };
 
     return (
         <div className='h-screen w-full flex justify-center items-center'>
             <div className='h-[90%] w-[80%] mx-auto sliderDiv flex items-center justify-between'>
                 <div className='flex items-center justify-between relative'>
-                    <div className="quoteDiv w-[61%] z-10 py-12">
+                    <div className={`quoteDiv w-[61%] z-10 py-12 transition-all duration-500 ${slide ? 'slide-in' : 'slide-out'}`}>
                         <h1 className='text-[32px] font-light text-[#202046]'>
                             {testimonials[current].testimonial}
                         </h1>
@@ -59,7 +67,7 @@ const Slider = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="imgDiv w-[50%] flex justify-center absolute right-0 top-0">
+                    <div className={`imgDiv w-[50%] flex justify-center absolute right-0 top-0 transition-all duration-500 ${slide ? 'slide-in' : 'slide-out'}`}>
                         <img className='w-[450px] shadow-2xl rounded-md' src={testimonials[current].image} alt="" />
                         <div className='rounded-[22px] flex items-center justify-between gap-0 absolute -bottom-5 left-20 custom-shadow'>
                             <button onClick={prevSlide} className='flex justify-start rounded-l-[22px] bg-white py-3 px-5 shadow-2xl hover:bg-gray-300 transition-colors duration-200'>

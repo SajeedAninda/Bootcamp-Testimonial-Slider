@@ -12,7 +12,27 @@
     background-position: 60px top;
 }
 
-.custom-shadow {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+.sliderDiv {
+    position: relative;
+    overflow: hidden;
   }
+  
+  .quoteDiv, .imgDiv {
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  }
+  
+  .slide-in {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
+  .slide-out {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  
+  .custom-shadow {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
   
