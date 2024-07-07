@@ -1,6 +1,9 @@
 import React from 'react';
 import "./slider.css";
 import tanyaImg from "../assets/image-tanya.jpg";
+import prevIcon from "../assets/icon-prev.svg";
+import nextIcon from "../assets/icon-next.svg";
+
 
 const Slider = () => {
     let testimonials = [
@@ -32,6 +35,14 @@ const Slider = () => {
                     </div>
                     <div className="imgDiv w-[50%] flex justify-center absolute right-0 top-0">
                         <img className='w-[450px] shadow-2xl rounded-md' src={testimonials[0].image} alt="" />
+                        <div className='rounded-[22px] flex items-center justify-between gap-0 absolute -bottom-5 left-20 custom-shadow'>
+                            <button className='flex justify-start rounded-l-[22px] bg-white py-3 px-5 shadow-2xl hover:bg-gray-300 transition-colors duration-200'>
+                                <img src={prevIcon} alt="" />
+                            </button>
+                            <button className='flex justify-end rounded-r-[22px] bg-white py-3 px-5 shadow-2xl hover:bg-gray-300 transition-colors duration-200'>
+                                <img src={nextIcon} alt="" />
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
