@@ -1,0 +1,6 @@
+.sliderDiv {
+    background-image: url('../assets/pattern-bg.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center right;
+}

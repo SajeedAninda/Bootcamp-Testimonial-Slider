@@ -1,9 +1,10 @@
+import Slider from "./Components/Slider";
 
 function App() {
 
   return (
     <>
-      HI
+      <Slider />
     </>
   )
 }
