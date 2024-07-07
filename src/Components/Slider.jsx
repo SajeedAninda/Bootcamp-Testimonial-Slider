@@ -1,46 +1,72 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "./slider.css";
 import tanyaImg from "../assets/image-tanya.jpg";
+import johnImg from "../assets/image-john.jpg";
 import prevIcon from "../assets/icon-prev.svg";
 import nextIcon from "../assets/icon-next.svg";
 
 
 const Slider = () => {
-    let testimonials = [
+    const testimonials = [
         {
             name: 'Tanya Sinclair',
             position: 'UX Engineer',
             testimonial: 'I’ve been interested in coding for a while but never taken the jump, until now. I couldn’t recommend this course enough. I’m now in the job of my dreams and so excited about the future.',
             image: tanyaImg
         },
-    ]
+        {
+            name: 'John Tarkpor',
+            position: 'Junior Front-end Developer',
+            testimonial: 'If you want to lay the best foundation possible I’d recommend taking this course. The depth the instructors go into is incredible. I now feel so confident about starting up as a professional developer.',
+            image: johnImg
+        },
+    ];
+
+    const [current, setCurrent] = useState(0);
+    const length = testimonials.length;
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrent(current => (current + 1) % length);
+        }, 3000);
+
+        return () => clearInterval(interval);
+    }, [length]);
+
+    const nextSlide = () => {
+        setCurrent(current === length - 1 ? 0 : current + 1);
+    };
+
+    const prevSlide = () => {
+        setCurrent(current === 0 ? length - 1 : current - 1);
+    };
 
     return (
-        <div className='h-screen w-full  flex justify-center items-center '>
+        <div className='h-screen w-full flex justify-center items-center'>
             <div className='h-[90%] w-[80%] mx-auto sliderDiv flex items-center justify-between'>
                 <div className='flex items-center justify-between relative'>
                     <div className="quoteDiv w-[61%] z-10 py-12">
                         <h1 className='text-[32px] font-light text-[#202046]'>
-                            {testimonials[0].testimonial}
+                            {testimonials[current].testimonial}
                         </h1>
 
                         <div className='mt-5 flex gap-4'>
                             <p className='text-[#202046] text-[18px] font-bold'>
-                                {testimonials[0].name}
+                                {testimonials[current].name}
                             </p>
                             <p className='text-[#BABACF] text-[18px] font-semibold'>
-                                {testimonials[0].position}
+                                {testimonials[current].position}
                             </p>
                         </div>
                     </div>
                     <div className="imgDiv w-[50%] flex justify-center absolute right-0 top-0">
-                        <img className='w-[450px] shadow-2xl rounded-md' src={testimonials[0].image} alt="" />
+                        <img className='w-[450px] shadow-2xl rounded-md' src={testimonials[current].image} alt="" />
                         <div className='rounded-[22px] flex items-center justify-between gap-0 absolute -bottom-5 left-20 custom-shadow'>
-                            <button className='flex justify-start rounded-l-[22px] bg-white py-3 px-5 shadow-2xl hover:bg-gray-300 transition-colors duration-200'>
-                                <img src={prevIcon} alt="" />
+                            <button onClick={prevSlide} className='flex justify-start rounded-l-[22px] bg-white py-3 px-5 shadow-2xl hover:bg-gray-300 transition-colors duration-200'>
+                                <img src={prevIcon} alt="Previous" />
                             </button>
-                            <button className='flex justify-end rounded-r-[22px] bg-white py-3 px-5 shadow-2xl hover:bg-gray-300 transition-colors duration-200'>
-                                <img src={nextIcon} alt="" />
+                            <button onClick={nextSlide} className='flex justify-end rounded-r-[22px] bg-white py-3 px-5 shadow-2xl hover:bg-gray-300 transition-colors duration-200'>
+                                <img src={nextIcon} alt="Next" />
                             </button>
                         </div>
                     </div>
