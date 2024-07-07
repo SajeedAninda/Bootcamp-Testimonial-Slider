@@ -1,38 +1,77 @@
+/* slider.css */
+
+/* General styles */
 .sliderDiv {
-    background-image: url('../assets/pattern-bg.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center right;
+  background-image: url('../assets/pattern-bg.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center right;
+  position: relative;
+  overflow: hidden;
 }
 
 .quoteDiv {
-    background-image: url('../assets/pattern-quotes.svg');
-    background-size: 20%;
-    background-repeat: no-repeat;
-    background-position: 60px top;
+  background-image: url('../assets/pattern-quotes.svg');
+  background-size: 20%;
+  background-repeat: no-repeat;
+  background-position: 60px top;
 }
 
-.sliderDiv {
-    position: relative;
-    overflow: hidden;
+/* Transition effects */
+.quoteDiv, .imgDiv {
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.slide-in {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.slide-out {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.custom-shadow {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .sliderDiv {
+      background-position: center top;
   }
-  
+
+  .quoteDiv {
+      background-position: center top;
+      background-size: 30%;
+  }
+
+  .imgDiv {
+      width: 100%;
+      justify-content: center;
+      position: static;
+  }
+
   .quoteDiv, .imgDiv {
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+      width: 100%;
+      text-align: center;
   }
-  
-  .slide-in {
-    transform: translateX(0);
-    opacity: 1;
+
+  .quoteDiv h1 {
+      font-size: 24px;
   }
-  
-  .slide-out {
-    transform: translateX(-100%);
-    opacity: 0;
+
+  .quoteDiv p {
+      font-size: 16px;
   }
-  
+
   .custom-shadow {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      position: static;
+      margin: 20px auto 0;
   }
-  
-  
+
+  .custom-shadow button {
+      padding: 10px;
+  }
+}

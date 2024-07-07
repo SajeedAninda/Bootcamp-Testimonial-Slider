@@ -50,15 +50,15 @@ const Slider = () => {
     };
 
     return (
-        <div className='h-screen w-full flex justify-center items-center'>
+        <div className='h-fit lg:h-screen w-full flex justify-center items-center'>
             <div className='h-[90%] w-[80%] mx-auto sliderDiv flex items-center justify-between'>
-                <div className='flex items-center justify-between relative'>
-                    <div className={`quoteDiv w-[61%] z-10 py-12 transition-all duration-500 ${slide ? 'slide-in' : 'slide-out'}`}>
+                <div className='flex py-12 lg:py-0 flex-col-reverse lg:flex-row items-center justify-between relative'>
+                    <div className={`quoteDiv w-[90%] lg:w-[61%] z-10 py-12 transition-all duration-500 ${slide ? 'slide-in' : 'slide-out'}`}>
                         <h1 className='text-[32px] font-light text-[#202046]'>
                             {testimonials[current].testimonial}
                         </h1>
 
-                        <div className='mt-5 flex gap-4'>
+                        <div className='mt-5 flex flex-col lg:flex-row gap-4'>
                             <p className='text-[#202046] text-[18px] font-bold'>
                                 {testimonials[current].name}
                             </p>
@@ -67,9 +67,9 @@ const Slider = () => {
                             </p>
                         </div>
                     </div>
-                    <div className={`imgDiv w-[50%] flex justify-center absolute right-0 top-0 transition-all duration-500 ${slide ? 'slide-in' : 'slide-out'}`}>
-                        <img className='w-[450px] shadow-2xl rounded-md' src={testimonials[current].image} alt="" />
-                        <div className='rounded-[22px] flex items-center justify-between gap-0 absolute -bottom-5 left-20 custom-shadow'>
+                    <div className={`imgDiv w-[90%] lg:w-[50%] flex justify-center lg:absolute right-0 top-0 transition-all duration-500 ${slide ? 'slide-in' : 'slide-out'}`}>
+                        <img className='w-[250px] md:w-[450px] lg:w-[450px] shadow-2xl rounded-md' src={testimonials[current].image} alt="" />
+                        <div className='rounded-[22px] flex items-center justify-between gap-0 absolute -bottom-5 left-[120px] lg:left-20 custom-shadow'>
                             <button onClick={prevSlide} className='flex justify-start rounded-l-[22px] bg-white py-3 px-5 shadow-2xl hover:bg-gray-300 transition-colors duration-200'>
                                 <img src={prevIcon} alt="Previous" />
                             </button>
